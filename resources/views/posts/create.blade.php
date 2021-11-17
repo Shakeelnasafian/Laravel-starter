@@ -9,7 +9,8 @@
         {{ session('msg') }}
     </div>
 @endif
-<form action="/posts" method="post">
+{{-- <form action="/posts" method="post"> --}}
+  {!! Form::open(['method'=>'POST','action' => 'PostsController@store']) !!}
     <div class="form-group">
       <label for="title">Post title:</label>
       <input type="text" class="form-control" name="title" placeholder="Enter post title" id="title">
@@ -18,9 +19,9 @@
         <label for="content">Post Content:</label>
         <textarea class="form-control" name="content"  rows="6" id="content"></textarea>
       </div>
-    {{csrf_field()}}
     <button type="submit" class="btn btn-primary">Create Post</button>
-  </form>
+  {!! Form::close() !!}
+{{-- </form> --}}
 </div>
 
 @endsection
