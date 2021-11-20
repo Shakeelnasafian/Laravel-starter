@@ -9,7 +9,8 @@
         {{ session('msg') }}
     </div>
 @endif
-<form action="/posts/{{$post->id}}" method="post">
+{!! Form::model($post,['method'=>'PATCH','action' => ['PostsController@update', $post->id]] ) !!}
+{{-- <form action="/posts/{{$post->id}}" method="post"> --}}
     <div class="form-group">
         <input type="hidden" name="_method" value="PUT">
       <label for="title">Post title:</label>
@@ -19,9 +20,10 @@
         <label for="content">Post Content:</label>
         <textarea class="form-control" name="content"  rows="6" id="content">{{$post->content}}</textarea>
       </div>
-    {{csrf_field()}}
+    {{-- {{csrf_field()}} --}}
     <button type="submit" class="btn btn-primary">Update Post</button>
-  </form>
+    {!! Form::close() !!}
+  {{-- </form> --}}
 </div>
 
 @endsection

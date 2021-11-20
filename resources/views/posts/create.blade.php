@@ -22,6 +22,17 @@
     <button type="submit" class="btn btn-primary">Create Post</button>
   {!! Form::close() !!}
 {{-- </form> --}}
+
+@if(count($errors)>0)
+
+      @foreach ($errors->all() as $error )
+
+      <li>{{ $error }}</li>
+        
+      @endforeach
+
+@endif
+
 </div>
 
 @endsection

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Requests\CreatePostsRequest;
 use App\Http\Requests;
 
 use App\Posts;
@@ -38,8 +38,12 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostsRequest $request)
     {
+        // $this->validate($request, [
+        //     'title'=>'required',
+        //     'content'=>'required'
+        // ]);
         Posts::create($request->all());
         return redirect('/posts');
         // return redirect()->back()->with([

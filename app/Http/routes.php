@@ -1,9 +1,5 @@
 <?php
 
-
-
-Route::resource('/posts', PostsController::class);
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -15,6 +11,13 @@ Route::resource('/posts', PostsController::class);
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/', 'PostsController@index');
+
+Route::group(['middleware','web'], function () {
+    Route::resource('/posts', PostsController::class);  
 });
+
+
+
+
